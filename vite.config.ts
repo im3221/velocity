@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: './', // GitHub Pages 배포를 위해 상대 경로 설정 추가
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
