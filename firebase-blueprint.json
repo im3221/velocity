@@ -1,0 +1,31 @@
+{
+  "entities": {
+    "LabResult": {
+      "title": "Lab Result",
+      "description": "Experiment data submitted by a student.",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "Student ID (e.g., 30101)" },
+        "studentName": { "type": "string", "description": "Student Name" },
+        "intervalTime": { "type": "number", "description": "Selected time interval" },
+        "experimentData": {
+          "type": "object",
+          "properties": {
+            "inputPos": { "type": "object" },
+            "plottedA": { "type": "array" },
+            "plottedB": { "type": "array" },
+            "answers": { "type": "object" }
+          }
+        },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "studentName", "submittedAt"]
+    }
+  },
+  "firestore": {
+    "/results/{resultId}": {
+      "schema": "LabResult",
+      "description": "Collection of experiment results"
+    }
+  }
+}

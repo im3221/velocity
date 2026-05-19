@@ -1,0 +1,8 @@
+{
+  "name": "Remix: 물체 운동 가상 실험실",
+  "description": "등속 운동 실험을 수행하고 학생들의 실험 결과를 실시간으로 수집하는 가상 실험실 어플리케이션입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

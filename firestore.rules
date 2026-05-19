@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidLabResult(data) {
+      return data.keys().hasAll(['studentId', 'studentName', 'submittedAt']) &&
+             data.studentId is string && data.studentId.size() > 0 && data.studentId.size() <= 20 &&
+             data.studentName is string && data.studentName.size() > 0 && data.studentName.size() <= 50 &&
+             data.submittedAt is string; // Using string as placeholder if client sends ISO string, or timestamp if using serverTimestamp
+    }
+
+    match /results/{resultId} {
+      // Allow anyone to submit results for this open lab
+      // In a real environment, we'd use request.auth.uid
+      allow create: if isValidLabResult(incoming());
+      
+      // Prevent reading other students' results from the client side for privacy
+      allow get: if false;
+      allow list: if false;
+    }
+  }
+}
