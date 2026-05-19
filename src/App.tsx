@@ -195,6 +195,7 @@ export default function App() {
               </div>
               <h2 className="text-3xl font-black text-slate-800 mb-2 text-center">과학 실험실 입장</h2>
               <p className="text-center text-slate-500 mb-8 font-medium">Ⅲ. 운동과 에너지 - 등속 운동 실험</p>
+              
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-400 mb-1 ml-1">학번</label>
@@ -334,33 +335,33 @@ export default function App() {
                 <div className="h-20 w-1 bg-red-200 rounded-full"></div>
               </div>
               {flashes.map((f, i) => (
-                <div key={i} className="absolute h-12 opacity-30 pointer-events-none" style={{ left: `${(f.posA / 40) * 100}%`, width: '15%' }}>
+                <div key={i} className="absolute h-10 opacity-30 pointer-events-none" style={{ left: `${(f.posA / 40) * 100}%`, width: '8%' }}>
                   <ToyCar color="#ef4444" />
                   <span className="absolute -top-8 left-0 text-[10px] font-black text-red-500/60 bg-white px-1.5 py-0.5 rounded shadow-sm border border-red-50">{f.t}s</span>
                 </div>
               ))}
               <motion.div 
-                className="absolute h-20 z-10" 
-                style={{ left: `${(elapsedTime * speedA / 40) * 100}%`, width: '15%' }}
+                className="absolute h-18 z-10" 
+                style={{ left: `${(elapsedTime * speedA / 40) * 100}%`, width: '8%' }}
               >
                 <ToyCar color="#ef4444" shadow />
               </motion.div>
             </div>
 
-            <div className="relative h-24 mb-10 flex items-center">
+            <div className="relative h-20 mb-10 flex items-center">
               <div className="absolute -left-8 flex flex-col items-center">
                 <span className="text-[10px] font-black text-green-500 bg-green-50 px-2 py-1 rounded-md mb-1 border border-green-100">(나)</span>
                 <div className="h-20 w-1 bg-green-200 rounded-full"></div>
               </div>
               {flashes.map((f, i) => (
-                <div key={i} className="absolute h-12 opacity-30 pointer-events-none" style={{ left: `${(f.posB / 40) * 100}%`, width: '15%' }}>
+                <div key={i} className="absolute h-10 opacity-30 pointer-events-none" style={{ left: `${(f.posB / 40) * 100}%`, width: '8%' }}>
                   <ToyCar color="#22c55e" />
                   <span className="absolute -top-8 left-0 text-[10px] font-black text-green-500/60 bg-white px-1.5 py-0.5 rounded shadow-sm border border-green-50">{f.t}s</span>
                 </div>
               ))}
               <motion.div 
-                className="absolute h-20 z-10" 
-                style={{ left: `${(elapsedTime * speedB / 40) * 100}%`, width: '15%' }}
+                className="absolute h-18 z-10" 
+                style={{ left: `${(elapsedTime * speedB / 40) * 100}%`, width: '8%' }}
               >
                 <ToyCar color="#22c55e" shadow />
               </motion.div>
